@@ -1,6 +1,7 @@
+
 using System;
 using System.Collections.Generic;
-using courceses;
+using TrainingManagementSystem.Models;
 
 namespace CourseServices
 {
@@ -10,7 +11,6 @@ namespace CourseServices
         {
             new Course("C101", "CSharp", 5000, 30, 2),
             new Course("C102", "Java", 4500, 25, 3),
-            
             new Course("C103", "Python", 4000, 20, 2),
             new Course("C104", "Web Development", 6000, 40, 3),
             new Course("C105", "SQL", 3000, 15, 2)
@@ -21,8 +21,8 @@ namespace CourseServices
             foreach (Course c in courses)
             {
                 Console.WriteLine(
-                    $"{c.Code} | {c.Title} | Fee: {c.Fee:F2} | " +
-                    $"Duration: {c.Duration} days | Seats: {c.Seats}");
+                    $"{c.CourseCode} | {c.Title} | Fee: {c.Fee:F2} | " +
+                    $"Duration: {c.DurationDays} days | Seats: {c.TotalSeats}");
             }
         }
 
@@ -35,13 +35,13 @@ namespace CourseServices
 
             foreach (Course c in courses)
             {
-                if (c.Code.Contains(
+                if (c.CourseCode.Contains(
                         search, StringComparison.OrdinalIgnoreCase) ||
                     c.Title.Contains(
                         search, StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine(
-                        $"{c.Code} | {c.Title} | Fee: {c.Fee:F2}");
+                        $"{c.CourseCode} | {c.Title} | Fee: {c.Fee:F2}");
 
                     found = true;
                 }
@@ -57,7 +57,7 @@ namespace CourseServices
         {
             foreach (Course c in courses)
             {
-                if (c.Code.Equals(
+                if (c.CourseCode.Equals(
                         code, StringComparison.OrdinalIgnoreCase))
                 {
                     return c;
@@ -66,9 +66,5 @@ namespace CourseServices
 
             return null;
         }
-        
-        
-        
-        
     }
 }
